@@ -1,5 +1,4 @@
-# George Tannious
-**Software Engineering Student / Junior at North Dakota State University (NDSU)**  
+*Software Engineering Student / Junior at North Dakota State University (NDSU)*  
 *Driven Software Engineer focused on AI, Full-Stack Development, & Scalable Systems*
 
 ---
@@ -11,7 +10,7 @@
 
 ## 🛠️ Technical Skills
 - **Languages:** Python, Java, JavaScript, TypeScript, C#, Dart, C++
-- **Frameworks & Libraries:** Vue 3, Angular 19, Flutter, Django REST Framework, Express.js, Pinia, Riverpod
+- **Frameworks & Libraries:** Vue 3, Angular 19, React, Flutter, Django 5 / Django REST Framework, Express.js, Pinia, Riverpod
 - **Web & Mobile:** HTML5, CSS3, Tailwind CSS, SCSS, Angular Material, Vite
 - **Databases & Cloud:** Firebase (Firestore & Auth), SQLite, Drizzle ORM
 - **Tools & Practices:** Git/GitHub, Playwright (E2E Testing), REST APIs, Real-time Sync
@@ -41,23 +40,24 @@ An intelligent healthcare sync platform that unifies fragmented patient record d
 
 ---
 
-### 3. Cadence-AI
-A cutting-edge autonomous system integration platform engineered to coordinate and synchronize multi-agent workflows. Cadence-AI handles communication, message passing, and real-time state tracking across distributed virtual or autonomous instances, minimizing latency and maximizing task execution efficiency in complex multi-agent environments.
+### 3. Cadence-AI (AI Music Tutor)
+An intelligent practice dashboard to connect student musicians with band directors by capturing practice habits, audio history, and AI-driven feedback. Instructors can upload music, and students can record themselves playing to receive instant AI feedback, tips, or custom lessons to guide them during individual at-home practice sessions.
 
 * **Frameworks & Key Tech:**
-  * **Django REST Framework:** Delivers high-throughput REST endpoints to process multi-agent telemetry, manage active system sessions, and serve real-time configuration models.
-  * **Drizzle ORM:** Provides lightweight, type-safe SQL query generation for immediate database reads and writes with minimal overhead.
-  * **Playwright:** Utilized for rigorous End-to-End (E2E) testing, ensuring multi-agent interaction sequences and dynamic UI dashboards perform smoothly under simulated loads.
+  * **Angular 19:** Serves as the robust front-end framework, leveraging strict TypeScript typing, SCSS, and Angular Signals for real-time UI updates.
+  * **Angular Material:** Provides enterprise-ready, accessible UI components aligned with modern design standards for student and director dashboards.
+  * **Django 5 & Django REST Framework:** Powers the backend REST API using Python to enforce secure database ORM mappings with SQLite, data validation rules, and secure JWT authentication.
 
 ---
 
 ### 4. ScriptureQuest
-An interactive, cross-platform mobile application designed to make historical and text-based exploration engaging and accessible. Featuring custom study pathways, search indexing, and offline capabilities, ScriptureQuest delivers an intuitive learning experience designed for high performance across diverse mobile hardware.
+A gamified learning platform modeled after Duolingo to teach theology and scriptural studies through interactive modules, dynamic quiz validation, and continuous streak tracking. Designed to deliver an engaging, structured study pathway, the platform makes scripture exploration accessible through responsive UI design and fast data fetching.
 
 * **Frameworks & Key Tech:**
-  * **Flutter:** The cross-platform framework used to render a single codebase natively onto iOS and Android with high frame rates and flexible custom widgets.
-  * **Riverpod:** Manages compile-safe, decoupled state management across complex user interaction flows and data fetching operations within Flutter.
-  * **Firebase (Firestore & Auth):** Provides cloud data persistence, offline synchronization, and seamless user account authentication out of the box.
+  * **React & Vite:** Powers the fast, modular frontend SPA with optimized bundling, instantaneous hot module replacement (HMR), and reactive component states.
+  * **TypeScript:** Enforces full-stack type safety across both client interfaces and server models to minimize runtime errors.
+  * **Express.js:** Serves as the backend web API framework handling lesson routes, progression tracking, and quiz verification logic.
+  * **Drizzle ORM & SQLite:** Delivers lightweight, type-safe SQL query generation for ultra-fast reads and writes with minimal database overhead.
 
 ---
 
