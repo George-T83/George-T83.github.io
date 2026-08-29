@@ -1,10 +1,10 @@
-*Software Engineering Student / Junior at North Dakota State University (NDSU)*  
-*Driven Software Engineer focused on AI, Full-Stack Development, & Scalable Systems*
+*Electrical Engineering Student / Junior at North Dakota State University (NDSU)*  
+*Driven Software Engineer Intern focused on AI, Full-Stack Development, & Scalable Systems*
 
 ---
 
 ## 🎓 Education
-- **North Dakota State University (NDSU)** – B.S. in Software Engineering *(Expected Graduation: Spring 2028)*
+- **North Dakota State University (NDSU)** – B.S. in Electrical Engineering *(Expected Graduation: Spring 2028)*
 
 ---
 
