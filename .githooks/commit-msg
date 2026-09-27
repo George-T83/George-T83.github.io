@@ -1,0 +1,2 @@
+#!/bin/sh
+exec perl "$(dirname "$0")/strip-ai-attribution.pl" "$1"

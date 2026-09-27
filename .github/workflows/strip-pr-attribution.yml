@@ -1,0 +1,42 @@
+name: Strip PR Attribution
+
+# Some PR-creation paths inject a "Generated with Claude Code" footer (and
+# similar) into the PR body server-side, after the fact - text that never
+# appeared in what a session actually wrote, so it can't be prevented at
+# authoring time the way the commit-msg hook prevents it for commits. This
+# scrubs it back out immediately whenever a PR is opened or its body edited.
+# See scripts/attributionPatterns.js for the shared definition of what
+# counts as attribution.
+
+on:
+  pull_request:
+    types: [opened, edited, reopened]
+
+permissions:
+  pull-requests: write
+
+jobs:
+  strip:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Strip AI attribution from PR body
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { stripAiAttribution } = require(process.env.GITHUB_WORKSPACE + '/scripts/attributionPatterns.js');
+            const body = context.payload.pull_request.body || '';
+            const cleaned = stripAiAttribution(body);
+            if (cleaned !== body) {
+              await github.rest.pulls.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.payload.pull_request.number,
+                body: cleaned,
+              });
+              core.notice('Stripped AI attribution from the PR body.');
+            } else {
+              core.info('PR body already clean - nothing to strip.');
+            }
