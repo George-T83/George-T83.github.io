@@ -12,7 +12,7 @@
 <meta property="og:image" content="assets/headshot.jpg" />
 <meta property="og:url" content="https://george-t83.github.io/" />
 <meta name="twitter:card" content="summary_large_image" />
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"George Tannious","jobTitle":"Electrical Engineering Student · NDSU","description":"Driven software engineer intern focused on AI, full-stack development, and scalable systems — building real products end to end, from database schema to interface polish.","url":"https://george-t83.github.io/","email":"mailto:george.tannious@gmail.com","sameAs":["https://linkedin.com/in/george-tannious","https://github.com/George-T83"],"alumniOf":{"@type":"CollegeOrUniversity","name":"North Dakota State University (NDSU)"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"George Tannious","jobTitle":"Electrical Engineering Student · NDSU","description":"Driven software engineer intern focused on AI, full-stack development, and scalable systems — building real products end to end, from database schema to interface polish.","url":"https://george-t83.github.io/","email":"mailto:george.tannious@gmail.com","sameAs":["https://www.linkedin.com/in/george-tannious/","https://github.com/George-T83"],"alumniOf":{"@type":"CollegeOrUniversity","name":"North Dakota State University (NDSU)"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <style>
 :root {
@@ -385,7 +385,7 @@ a:focus-visible, button:focus-visible, label:focus-within { outline: 2.5px solid
           <p class="contact-lede" data-reveal>Open to software or electrical engineering internships and collaborations in AI and embedded systems.</p>
           <ul class="contact-grid">
             <li class="contact-card" data-reveal><span class="contact-label">Email</span><a href="mailto:george.tannious@gmail.com">george.tannious@gmail.com</a></li>
-            <li class="contact-card" data-reveal><span class="contact-label">LinkedIn</span><a href="https://linkedin.com/in/george-tannious" target="_blank" rel="noopener noreferrer">linkedin.com/in/george-tannious</a></li>
+            <li class="contact-card" data-reveal><span class="contact-label">LinkedIn</span><a href="https://www.linkedin.com/in/george-tannious/" target="_blank" rel="noopener noreferrer">linkedin.com/in/george-tannious</a></li>
             <li class="contact-card" data-reveal><span class="contact-label">Resume</span><a href="mailto:george.tannious@gmail.com?subject=Resume%20Request">Available on request</a></li>
             <li class="contact-card" data-reveal><span class="contact-label">GitHub</span><a href="https://github.com/George-T83" target="_blank" rel="noopener noreferrer">github.com/George-T83</a></li>
           </ul>
@@ -404,6 +404,20 @@ a:focus-visible, button:focus-visible, label:focus-within { outline: 2.5px solid
 <script>
 (function () {
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Toggling dark mode via the label's native for="dm-toggle" behavior focuses
+  // the (offscreen, top-of-body) checkbox, which the browser scrolls into
+  // view — jumping the page to the top. Intercept the click and flip the
+  // checkbox manually, without ever focusing it, so no scroll happens.
+  var dmSwitch = document.querySelector(".dm-switch");
+  var dmToggle = document.getElementById("dm-toggle");
+  if (dmSwitch && dmToggle) {
+    dmSwitch.addEventListener("click", function (e) {
+      e.preventDefault();
+      dmToggle.checked = !dmToggle.checked;
+      dmToggle.dispatchEvent(new Event("change"));
+    });
+  }
 
   // Staggered scroll-reveal for [data-reveal] elements, grouped by shared parent
   // so siblings (stat tiles, skill cards, project cards) cascade in together.
