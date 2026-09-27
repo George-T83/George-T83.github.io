@@ -22,8 +22,9 @@ $text =~ s/\n{0,2}-{3,}\s*\n+\s*(?:\x{1F916}\s*)?_{0,2}\**\s*Generated (?:with|b
 # Any remaining stray "Generated with/by Claude Code" line.
 $text =~ s/^\s*(?:\x{1F916}\s*)?_{0,2}\**\s*Generated (?:with|by)\s*\[?Claude Code\]?.*$//gim;
 
-# Co-Authored-By trailers.
-$text =~ s/^Co-Authored-By:.*$//gim;
+# Co-Authored-By trailers naming a known AI assistant (Claude, Copilot,
+# Gemini/gemini-code-assist) - never a real teammate's Co-Authored-By line.
+$text =~ s/^(Co-Authored-By:.*)$/$1 =~ m{claude|anthropic|copilot|gemini}i ? '' : $1/gime;
 
 # Claude-Session trailers / bare claude.ai session links.
 $text =~ s/^\s*(?:Claude-Session:\s*)?https:\/\/claude\.ai\/\S*\s*$//gim;

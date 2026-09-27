@@ -9,12 +9,20 @@
  * remove instead of drifting apart over time.
  */
 
+// Known AI-assistant names that show up in Co-Authored-By trailers. A line
+// naming any of these gets stripped; a line naming a real human (a
+// teammate's name/handle/personal email) never matches and is always kept.
+const AI_CO_AUTHOR_NAMES = /claude|anthropic|copilot|gemini/i;
+
 /**
- * Strips Co-Authored-By trailers, "Generated with/by Claude" footers (with
- * or without a leading emoji/markdown link/em-dash rule), and bare
- * claude.ai session links from `text`. Safe to call on commit messages, PR
- * bodies, or any other free text - returns the input unchanged if none of
- * the patterns match.
+ * Strips Co-Authored-By trailers naming a known AI assistant (Claude,
+ * Copilot, Gemini/gemini-code-assist), "Generated with/by Claude" footers
+ * (with or without a leading emoji/markdown link/em-dash rule), and bare
+ * claude.ai session links from `text`. Never touches a Co-Authored-By line
+ * naming a real human teammate - only AI attribution is unwanted, not
+ * co-authorship in general. Safe to call on commit messages, PR bodies, or
+ * any other free text - returns the input unchanged if none of the
+ * patterns match.
  */
 function stripAiAttribution(text) {
   if (!text) return text;
@@ -39,9 +47,11 @@ function stripAiAttribution(text) {
     '',
   );
 
-  // Co-Authored-By trailers - this repo has exactly one legitimate author,
-  // so any Co-Authored-By line (Claude's or otherwise) is unwanted here.
-  out = out.replace(/^Co-Authored-By:.*$/gim, '');
+  // Co-Authored-By trailers naming a known AI assistant. Scoped this way
+  // (not "any Co-Authored-By line") because this kit runs across
+  // multi-contributor repos too - a real teammate's Co-Authored-By credit
+  // must never be touched, only another AI's.
+  out = out.replace(/^Co-Authored-By:.*$/gim, (line) => (AI_CO_AUTHOR_NAMES.test(line) ? '' : line));
 
   // "Claude-Session: <url>" trailers and bare claude.ai session links sitting
   // alone on their own line.
