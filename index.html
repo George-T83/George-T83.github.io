@@ -20,7 +20,6 @@
   --text: #171a2b; --text-muted: #565b74; --text-faint: #8b90a8;
   --accent: #4f46e5; --accent-2: #0ea5a4;
   --border: #e4e6f2; --border-strong: #c7cbe8; --on-accent: #ffffff;
-  --card-glow: color-mix(in srgb, var(--accent) 16%, transparent);
   --card-hover-shadow: 0 16px 32px -18px color-mix(in srgb, var(--text) 35%, transparent);
   color-scheme: light;
 }
@@ -29,7 +28,6 @@
   --text: #eef0ff; --text-muted: #a9adcf; --text-faint: #6d7199;
   --accent: #7dd3fc; --accent-2: #d6a4ff;
   --border: rgba(255,255,255,0.12); --border-strong: rgba(255,255,255,0.26); --on-accent: #0a0b18;
-  --card-glow: color-mix(in srgb, var(--accent) 30%, white 8%);
   --card-hover-shadow: 0 16px 36px -16px color-mix(in srgb, var(--accent) 45%, transparent), 0 8px 20px -12px rgba(0,0,0,0.5);
   color-scheme: dark;
 }
@@ -159,12 +157,6 @@ a:focus-visible, button:focus-visible, label:focus-within { outline: 2.5px solid
   transform: translateY(-4px);
   box-shadow: var(--card-hover-shadow);
 }
-.proj-card::before, .skill-card::before, .contact-card::before, .edu-card::before, .proj-featured::after {
-  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity 0.3s ease;
-  background: radial-gradient(140px circle at var(--mx, 50%) var(--my, 50%), var(--card-glow), transparent 65%);
-}
-.proj-card:hover::before, .skill-card:hover::before, .contact-card:hover::before, .edu-card:hover::before, .proj-featured:hover::after { opacity: 1; }
-
 .skip-link { position: absolute; top: -60px; left: 12px; z-index: 200; background: var(--accent); color: var(--on-accent); padding: 12px 20px; border-radius: 10px; font-weight: 700; font-size: 0.9rem; transition: top 0.2s ease; }
 .skip-link:focus { top: 12px; }
 
@@ -507,18 +499,6 @@ a:focus-visible, button:focus-visible, label:focus-within { outline: 2.5px solid
       document.addEventListener("scroll", updateGlow, { passive: true });
       updateGlow();
     }
-  }
-
-  // Cursor-follow spotlight on cards — a CSS var updated on mousemove, read
-  // by a ::before radial-gradient in base.css.js. Pure hover decoration.
-  if (window.matchMedia("(hover: hover)").matches) {
-    document.querySelectorAll(".proj-card, .skill-card, .contact-card, .edu-card, .proj-featured").forEach(function (card) {
-      card.addEventListener("mousemove", function (e) {
-        var rect = card.getBoundingClientRect();
-        card.style.setProperty("--mx", e.clientX - rect.left + "px");
-        card.style.setProperty("--my", e.clientY - rect.top + "px");
-      });
-    });
   }
 })();
 </script>
