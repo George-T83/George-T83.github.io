@@ -68,3 +68,11 @@ A real-time synchronized family task management mobile app tailored for modern h
   * **Flutter:** Powers the unified native mobile user experience across mobile operating systems.
   * **Riverpod:** Maintains reactive real-time state updates throughout the app lifecycle, ensuring smooth UI re-renders on task changes.
   * **Firebase Firestore:** Acts as the real-time NoSQL cloud database, pushing live updates instantly via websockets whenever data changes occur.
+
+## Contributing
+
+This repo strips AI attribution (Co-Authored-By trailers, "Generated with Claude" footers, session links) from commits automatically via a git hook, and double-checks it in CI. After cloning, run once:
+
+```bash
+git config core.hooksPath .githooks
+```

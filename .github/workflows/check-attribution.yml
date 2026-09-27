@@ -1,0 +1,30 @@
+name: Check Commit Attribution
+
+# CI enforcement point: fails the build if any commit on this PR still
+# carries AI attribution (Co-Authored-By / "Generated with Claude" / a
+# claude.ai session link). Backstop for a commit that never went through
+# the local commit-msg hook - made without the hook installed, via the
+# GitHub web UI, or via an API that writes commits directly.
+#
+# Node is preinstalled on GitHub-hosted runners regardless of this repo's
+# own stack, and this script has zero external dependencies (only Node
+# built-ins), so no install step is needed here.
+#
+# See scripts/attributionPatterns.js for the shared definition of what
+# counts as attribution.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check Commit Messages for AI Attribution
+        run: node scripts/check-commit-attribution.mjs "origin/${{ github.base_ref }}..HEAD"

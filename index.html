@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SaaS Aurora — George Tannious</title>
+<meta name="description" content="Driven software engineer intern focused on AI, full-stack development, and scalable systems — building real products end to end, from database schema to interface polish." />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234f46e5'/%3E%3Cstop offset='1' stop-color='%230ea5a4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='43' font-family='Arial, sans-serif' font-weight='800' font-size='26' fill='white' text-anchor='middle'%3EGT%3C/text%3E%3C/svg%3E" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="George Tannious — Electrical Engineering Student · NDSU" />
+<meta property="og:description" content="Driven software engineer intern focused on AI, full-stack development, and scalable systems — building real products end to end, from database schema to interface polish." />
+<meta property="og:image" content="assets/headshot.jpg" />
+<meta property="og:url" content="https://george-t83.github.io/" />
+<meta name="twitter:card" content="summary_large_image" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"George Tannious","jobTitle":"Electrical Engineering Student · NDSU","description":"Driven software engineer intern focused on AI, full-stack development, and scalable systems — building real products end to end, from database schema to interface polish.","url":"https://george-t83.github.io/","email":"mailto:george.tannious@gmail.com","sameAs":["https://linkedin.com/in/george-tannious","https://github.com/George-T83"],"alumniOf":{"@type":"CollegeOrUniversity","name":"North Dakota State University (NDSU)"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg: #f8f9fc; --surface: #ffffff; --surface-alt: #f0f2fa;
+  --text: #171a2b; --text-muted: #565b74; --text-faint: #8b90a8;
+  --accent: #4f46e5; --accent-2: #0ea5a4;
+  --border: #e4e6f2; --border-strong: #c7cbe8; --on-accent: #ffffff;
+  --card-glow: color-mix(in srgb, var(--accent) 16%, transparent);
+  --card-hover-shadow: 0 16px 32px -18px color-mix(in srgb, var(--text) 35%, transparent);
+  color-scheme: light;
+}
+.dm-toggle-input:checked ~ .page {
+  --bg: #0a0b18; --surface: rgba(255,255,255,0.055); --surface-alt: rgba(255,255,255,0.03);
+  --text: #eef0ff; --text-muted: #a9adcf; --text-faint: #6d7199;
+  --accent: #7dd3fc; --accent-2: #d6a4ff;
+  --border: rgba(255,255,255,0.12); --border-strong: rgba(255,255,255,0.26); --on-accent: #0a0b18;
+  --card-glow: color-mix(in srgb, var(--accent) 30%, white 8%);
+  --card-hover-shadow: 0 16px 36px -16px color-mix(in srgb, var(--accent) 45%, transparent), 0 8px 20px -12px rgba(0,0,0,0.5);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); }
+
+.scroll-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); z-index: 100; }
+
+[data-reveal] { opacity: 0; transform: translateY(26px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); will-change: opacity, transform; }
+[data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1; transform: none; transition: none; }
+}
+
+.hero-glow { position: absolute; inset: -15% -10% -30% -10%; z-index: -1; pointer-events: none; will-change: transform; }
+.dm-toggle-input { position: absolute; opacity: 0; pointer-events: none; }
+.page {
+  background: var(--bg); color: var(--text); font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
+  min-height: 100%; transition: background 0.3s ease, color 0.3s ease;
+}
+h1, h2, h3 { font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif); color: var(--text); margin: 0 0 0.5em; line-height: 1.1; }
+p { margin: 0 0 1em; color: var(--text-muted); }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+a:focus-visible, button:focus-visible, label:focus-within { outline: 2.5px solid var(--accent); outline-offset: 3px; }
+.wrap { max-width: 1120px; margin-inline: auto; padding-inline: 24px; }
+
+.site-header { position: sticky; top: 0; z-index: 40; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+.header-inner { display: flex; align-items: center; justify-content: space-between; padding-block: 16px; gap: 16px; }
+.logo { font-weight: 700; font-size: 1.15rem; }
+.site-nav { display: flex; align-items: center; gap: 28px; }
+.nav-links { display: flex; gap: 24px; }
+.nav-links a { font-weight: 600; font-size: 0.93rem; color: var(--text-muted); }
+.nav-links a:hover { color: var(--text); }
+
+.dm-switch { display: inline-flex; align-items: center; gap: 9px; cursor: pointer; }
+.dm-icon { width: 17px; height: 17px; flex-shrink: 0; color: var(--text-faint); transition: color 0.2s ease, opacity 0.2s ease; opacity: 0.55; }
+.dm-icon-sun { color: #e8a13d; opacity: 1; }
+.dm-toggle-input:checked ~ .page .dm-icon-sun { color: var(--text-faint); opacity: 0.4; }
+.dm-toggle-input:checked ~ .page .dm-icon-moon { color: var(--accent-2); opacity: 1; }
+.dm-switch-track { width: 46px; height: 25px; border-radius: 999px; position: relative; background: var(--surface-alt); border: 1px solid var(--border-strong); transition: background 0.2s ease; }
+.dm-switch-thumb { position: absolute; top: 2px; left: 2px; width: 21px; height: 21px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent-2)); transition: transform 0.2s ease; }
+.dm-switch-thumb svg { position: absolute; inset: 0; margin: auto; width: 13px; height: 13px; color: #fff; transition: opacity 0.15s ease; }
+.dm-switch-thumb .thumb-moon { opacity: 0; }
+.dm-toggle-input:checked ~ .page .dm-switch-thumb { transform: translateX(21px); }
+.dm-toggle-input:checked ~ .page .dm-switch-thumb .thumb-sun { opacity: 0; }
+.dm-toggle-input:checked ~ .page .dm-switch-thumb .thumb-moon { opacity: 1; }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 24px; border-radius: 999px; font-weight: 700; font-size: 0.95rem; border: none; cursor: pointer; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+.btn:hover { transform: translateY(-1px); }
+.btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: var(--on-accent); box-shadow: 0 10px 24px -8px color-mix(in srgb, var(--accent) 55%, transparent); }
+.btn-ghost { background: transparent; border: 1.5px solid var(--border-strong); color: var(--text); }
+.btn-ghost:hover { border-color: var(--accent); }
+.btn-sm { padding: 9px 16px; font-size: 0.82rem; }
+
+.section { padding-block: 80px; scroll-margin-top: 76px; }
+.section-alt { background: var(--surface-alt); }
+.eyebrow { font-family: var(--font-mono, 'Plus Jakarta Sans', sans-serif); color: var(--accent-2); text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.85rem; margin-bottom: 16px; }
+.section-heading { margin-bottom: 36px; }
+
+.hero { position: relative; padding-block: 80px 64px; overflow: hidden; scroll-margin-top: 0; }
+.hero-inner { position: relative; display: grid; grid-template-columns: 1.25fr 0.9fr; gap: 52px; align-items: center; }
+.hero h1 { font-size: clamp(2.5rem, 5vw, 3.8rem); font-weight: 800; }
+.hero-lede { max-width: 520px; font-size: 1.1rem; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin: 28px 0 40px; }
+.stats { display: flex; flex-wrap: wrap; gap: 30px; margin: 0; padding-top: 24px; border-top: 1px solid var(--border); }
+.stats dt { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-faint); }
+.stats dd { margin: 6px 0 0; font-size: 1.25rem; font-weight: 800; color: var(--text); }
+.hero-photo img { width: 100%; aspect-ratio: 1/1.05; object-fit: cover; border-radius: 28px; }
+
+.about-inner { display: grid; grid-template-columns: 420px 1fr; gap: 56px; align-items: center; }
+.about-photo img { width: 100%; aspect-ratio: 1/1; object-fit: cover; object-position: center 60%; border-radius: 28px; }
+.about-copy h2 { font-size: 2rem; }
+.about-copy p { font-size: 1.22rem; line-height: 1.65; }
+
+.edu-card { position: relative; overflow: hidden; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 30px 34px; }
+.edu-meta { display: flex; flex-wrap: wrap; gap: 10px; }
+.badge { font-size: 0.8rem; padding: 7px 15px; border-radius: 999px; background: var(--surface-alt); color: var(--accent); border: 1px solid var(--border); }
+.badge-alt { color: var(--accent-2); }
+
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
+.skill-card { position: relative; overflow: hidden; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 24px; }
+.skill-card h3 { font-size: 1.02rem; color: var(--accent-2); margin-bottom: 14px; }
+.pill-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.pill { font-size: 0.8rem; padding: 5px 12px; border-radius: 999px; background: var(--surface-alt); border: 1px solid var(--border); color: var(--text); }
+
+.proj-featured-stack { display: flex; flex-direction: column; }
+.proj-featured { position: relative; overflow: hidden; border-radius: 22px; padding: 8px; margin-bottom: 22px; background: linear-gradient(150deg, color-mix(in srgb, var(--accent) 8%, var(--surface)), color-mix(in srgb, var(--accent-2) 8%, var(--surface))); border: 1px solid var(--border); }
+.proj-featured-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 8px; align-items: center; }
+.proj-featured-solo .proj-featured-grid { grid-template-columns: 1fr; }
+.proj-featured-body { padding: 26px 8px 26px 28px; }
+.proj-featured-solo .proj-featured-body { padding: 30px 34px; }
+.proj-featured-media { border-radius: 16px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 20px 44px -22px color-mix(in srgb, var(--text) 45%, transparent); }
+.proj-featured-media img { width: 100%; aspect-ratio: 3/2; object-fit: cover; object-position: top; }
+.proj-flag { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-2); margin-bottom: 12px; }
+.proj-featured-body h3 { font-size: 1.6rem; }
+
+.award-ribbon { display: inline-flex; align-items: center; gap: 6px; font-size: 0.78rem; font-weight: 800; color: #7a5b00; background: linear-gradient(135deg, #ffd76a, #ffb648); padding: 6px 14px; border-radius: 999px; margin-bottom: 12px; }
+.award-list { list-style: none; margin: 0 0 16px; padding: 0; display: flex; flex-wrap: wrap; gap: 7px; }
+.award-pill { font-size: 0.76rem; font-weight: 600; padding: 5px 11px; border-radius: 999px; background: color-mix(in srgb, #ffb648 16%, var(--surface)); color: #8a6200; border: 1px solid color-mix(in srgb, #ffb648 45%, var(--border)); }
+.dm-toggle-input:checked ~ .page .award-ribbon { color: #3a2900; }
+.dm-toggle-input:checked ~ .page .award-pill { color: #ffd98a; background: color-mix(in srgb, #ffb648 20%, transparent); border-color: color-mix(in srgb, #ffb648 40%, transparent); }
+.proj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.proj-card { position: relative; overflow: hidden; background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 26px; display: flex; flex-direction: column; }
+.proj-card-media { margin: 4px 0 14px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+.proj-card-media img { width: 100%; aspect-ratio: 16/10; object-fit: cover; object-position: top; }
+.proj-role { font-size: 0.8rem; color: var(--accent); margin-bottom: 8px; }
+.proj-desc { flex-grow: 1; }
+.tech-list { list-style: none; margin: 0 0 6px; padding: 0; display: flex; flex-wrap: wrap; gap: 7px; }
+.tech-pill { font-size: 0.74rem; padding: 4px 10px; border-radius: 999px; background: var(--surface-alt); color: var(--text-muted); border: 1px solid var(--border); }
+.proj-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+.no-link { font-size: 0.78rem; color: var(--text-faint); font-style: italic; }
+
+.contact-lede { max-width: 520px; }
+.contact-grid { list-style: none; margin: 30px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.contact-card { position: relative; overflow: hidden; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 20px 22px; }
+.contact-label { display: block; font-size: 0.75rem; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+.contact-card a { font-weight: 700; word-break: break-word; }
+.contact-card a:hover { color: var(--accent); }
+
+.proj-card, .skill-card, .contact-card, .edu-card, .proj-featured {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.proj-card:hover, .skill-card:hover, .contact-card:hover, .edu-card:hover, .proj-featured:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--card-hover-shadow);
+}
+.proj-card::before, .skill-card::before, .contact-card::before, .edu-card::before, .proj-featured::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity 0.3s ease;
+  background: radial-gradient(140px circle at var(--mx, 50%) var(--my, 50%), var(--card-glow), transparent 65%);
+}
+.proj-card:hover::before, .skill-card:hover::before, .contact-card:hover::before, .edu-card:hover::before, .proj-featured:hover::after { opacity: 1; }
+
+.skip-link { position: absolute; top: -60px; left: 12px; z-index: 200; background: var(--accent); color: var(--on-accent); padding: 12px 20px; border-radius: 10px; font-weight: 700; font-size: 0.9rem; transition: top 0.2s ease; }
+.skip-link:focus { top: 12px; }
+
+.github-graph-card { position: relative; overflow-x: auto; margin-top: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 20px 22px; }
+.github-graph { display: block; min-width: 640px; width: 100%; margin-top: 10px; }
+
+.site-footer { padding-block: 28px; border-top: 1px solid var(--border); }
+.site-footer p { margin: 0; font-size: 0.85rem; color: var(--text-faint); text-align: center; }
+
+@media (max-width: 780px) {
+  .hero-inner, .about-inner { grid-template-columns: 1fr; }
+  .hero-photo { max-width: 320px; }
+  .about-photo { max-width: 380px; margin-inline: auto; }
+  .nav-links { display: none; }
+  .section { padding-block: 56px; }
+  .proj-featured-grid { grid-template-columns: 1fr; }
+  .proj-featured-body { padding: 22px 20px 8px; }
+}
+
+
+    .hero-glow { background: radial-gradient(700px 420px at 12% -10%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 60%), radial-gradient(600px 420px at 92% 5%, color-mix(in srgb, var(--accent-2) 12%, transparent), transparent 60%); }
+  </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to content</a>
+<div class="scroll-progress" aria-hidden="true"></div>
+<input type="checkbox" id="dm-toggle" class="dm-toggle-input" />
+<script>
+(function () {
+  try {
+    var toggle = document.getElementById("dm-toggle");
+    var saved = localStorage.getItem("gt-theme");
+    if (saved === "dark") toggle.checked = true;
+    else if (saved === "light") toggle.checked = false;
+    else if (window.matchMedia("(prefers-color-scheme: dark)").matches) toggle.checked = true;
+    toggle.addEventListener("change", function () {
+      localStorage.setItem("gt-theme", toggle.checked ? "dark" : "light");
+    });
+  } catch (e) {}
+})();
+</script>
+<div class="page">
+
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="logo" href="#top">GT</a>
+        <nav class="site-nav">
+          <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#education">Education</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+          </div>
+          <label class="dm-switch" for="dm-toggle" aria-label="Toggle dark mode">
+            <svg class="dm-icon dm-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/></svg>
+            <span class="dm-switch-track"><span class="dm-switch-thumb">
+              <svg class="thumb-sun" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5.5"/></svg>
+              <svg class="thumb-moon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 14.7A8.5 8.5 0 019.3 3.5 9 9 0 1020.5 14.7z"/></svg>
+            </span></span>
+            <svg class="dm-icon dm-icon-moon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 14.7A8.5 8.5 0 019.3 3.5 9 9 0 1020.5 14.7z"/></svg>
+          </label>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section id="top" class="hero">
+        <div class="hero-glow" aria-hidden="true"></div>
+        <div class="wrap hero-inner">
+          <div class="hero-text">
+            <p class="eyebrow">Electrical Engineering Student · NDSU</p>
+            <h1 data-reveal>George Tannious</h1>
+            <p class="hero-lede" data-reveal>Driven software engineer intern focused on AI, full-stack development, and scalable systems — building real products end to end, from database schema to interface polish.</p>
+            <div class="hero-actions" data-reveal>
+              <a class="btn btn-primary" href="#projects">View Projects</a>
+              <a class="btn btn-ghost" href="#contact">Get in Touch</a>
+            </div>
+            <dl class="stats" data-reveal>
+              <div><dt>Class of</dt><dd>2028</dd></div>
+              <div><dt>Projects</dt><dd data-countup="8">0</dd></div>
+              <div><dt>GPA</dt><dd data-countup-decimal="4.0">0.0</dd></div>
+              <div><dt>Focus</dt><dd>AI &amp; Embedded</dd></div>
+            </dl>
+          </div>
+          <div class="hero-photo" data-reveal>
+            <img src="assets/headshot.jpg" alt="Portrait of George Tannious" />
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section section-alt">
+        <div class="wrap about-inner">
+          <div class="about-photo" data-reveal>
+            <img src="assets/ndsu.jpg" alt="George Tannious at the NDSU bison statue on campus" />
+          </div>
+          <div class="about-copy" data-reveal>
+            <h2>About Me</h2>
+            <p>I'm a Junior in Electrical Engineering, minoring in Robotics, at North Dakota State University — a National Merit Commended Scholar and Dean's List honoree carrying a 4.0 GPA. My path started in software: two years of internship experience spanning full-stack web development and enterprise IT. It's since grown into embedded systems and hardware — I led the electrical and firmware design of TerraCleaner, an autonomous litter-collection robot that won four regional and state awards. I like problems that span the whole stack, from PWM motor control up to production web apps real people use. Outside of engineering, I play chess, piano, and flute.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="education" class="section">
+        <div class="wrap">
+          <h2 class="section-heading" data-reveal>Education</h2>
+          <div class="edu-card" data-reveal>
+            <div>
+              <h3 style="margin-bottom:6px;">North Dakota State University (NDSU)</h3>
+              <p style="margin:0;">B.S. in Electrical Engineering, Minor: Robotics</p>
+            </div>
+            <div class="edu-meta">
+              <span class="badge">Junior (Fall 2026) · Expected May 2028 · GPA 4.0 / 4.0</span>
+              <span class="badge badge-alt">National Merit Commended Scholar · Dean's List</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="section section-alt">
+        <div class="wrap">
+          <h2 class="section-heading" data-reveal>Technical Skills</h2>
+          <div class="skills-grid">
+            <div class="skill-card" data-reveal><h3>Languages</h3><ul class="pill-list"><li class="pill">Python</li><li class="pill">Java</li><li class="pill">JavaScript</li><li class="pill">TypeScript</li><li class="pill">C#</li><li class="pill">Dart</li><li class="pill">C++</li></ul></div><div class="skill-card" data-reveal><h3>Frameworks &amp; Libraries</h3><ul class="pill-list"><li class="pill">Vue 3</li><li class="pill">Angular 19</li><li class="pill">React</li><li class="pill">Flutter</li><li class="pill">Django 5</li><li class="pill">Django REST Framework</li><li class="pill">Express.js</li><li class="pill">Pinia</li><li class="pill">Riverpod</li><li class="pill">ASP.NET Core Blazor</li></ul></div><div class="skill-card" data-reveal><h3>Web &amp; Mobile</h3><ul class="pill-list"><li class="pill">HTML5</li><li class="pill">CSS3</li><li class="pill">Tailwind CSS</li><li class="pill">SCSS</li><li class="pill">Angular Material</li><li class="pill">Vite</li></ul></div><div class="skill-card" data-reveal><h3>Databases &amp; Cloud</h3><ul class="pill-list"><li class="pill">Firebase (Firestore &amp; Auth)</li><li class="pill">SQLite</li><li class="pill">Drizzle ORM</li><li class="pill">Entity Framework Core</li></ul></div><div class="skill-card" data-reveal><h3>Embedded Systems &amp; Hardware</h3><ul class="pill-list"><li class="pill">C/C++ (Arduino/ATmega)</li><li class="pill">UART / SPI / I2C</li><li class="pill">PWM Motor Control</li><li class="pill">L298N H-Bridge</li><li class="pill">24V Power Delivery</li><li class="pill">Oscilloscopes</li><li class="pill">Fusion 360</li></ul></div><div class="skill-card" data-reveal><h3>Tools &amp; Practices</h3><ul class="pill-list"><li class="pill">Git / GitHub</li><li class="pill">Playwright (E2E Testing)</li><li class="pill">REST APIs</li><li class="pill">Real-time Sync</li><li class="pill">CI/CD</li></ul></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="section">
+        <div class="wrap">
+          <h2 class="section-heading" data-reveal>Featured Projects</h2>
+          <div class="proj-featured-stack">
+    <div class="proj-featured " data-reveal>
+      <div class="proj-featured-grid">
+        
+      <div class="proj-featured-body">
+        <p class="proj-flag">★ Featured · Live Demo</p>
+        <h3>Syllabus Sense</h3>
+        
+        <p class="proj-desc">An AI-powered academic companion. Upload a syllabus PDF and Claude extracts the course, every assignment with its due date and grade weight, the grading scale, and attendance policy — reviewed and editable before anything is trusted. Includes a live weighted-grade tracker with a what-if simulator, a whole-degree progress planner, AI-generated flashcards and quizzes, and an AI advisor chat grounded in the student's real policies and grades.</p>
+        
+        <ul class="tech-list"><li class="tech-pill">Next.js 14</li><li class="tech-pill">TypeScript</li><li class="tech-pill">Tailwind CSS</li><li class="tech-pill">Firebase</li><li class="tech-pill">Anthropic Claude API</li><li class="tech-pill">Recharts</li><li class="tech-pill">Vitest &amp; Playwright</li></ul>
+        <div class="proj-links"><a class="btn btn-primary btn-sm" href="https://syllabus-sense.vercel.app" target="_blank" rel="noopener noreferrer">Live Demo ↗</a><a class="btn btn-ghost btn-sm" href="https://github.com/George-T83/Syllabus-Sense" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
+      </div>
+        <div class="proj-featured-media"><img src="assets/syllabus-sense-degree-compass.png" alt="Syllabus Sense Degree Compass — a whole-degree progress planner" loading="lazy" /></div>
+      </div>
+    </div>
+    <div class="proj-featured proj-featured-solo" data-reveal>
+      <div class="proj-featured-grid">
+        
+      <div class="proj-featured-body">
+        <p class="proj-flag">🏆 Featured · Award-Winning</p>
+        <h3>TerraCleaner</h3>
+        <p class="proj-role">Lead Electrical &amp; Firmware Engineer · 2025 · Autonomous Litter-Collection Robot</p>
+        <p class="proj-desc">Co-designed an autonomous litter-collection robot under a $500 budget. Owned the electrical architecture, 24V power delivery and regulation, and prototype breadboard wiring. Programmed the C++ firmware, including PWM motor speed control for drive and collection mechanisms.</p>
+        
+    <div class="award-ribbon">🏆 Award-Winning — 4 Awards</div>
+    <ul class="award-list"><li class="award-pill">🏅 SAE Mobility Award</li><li class="award-pill">🏅 Otter Tail Power Award</li><li class="award-pill">🏅 Xcel Energy Award</li><li class="award-pill">🏅 State &amp; Regional Science Fair Award</li></ul>
+        <ul class="tech-list"><li class="tech-pill">C++</li><li class="tech-pill">PWM Motor Control</li><li class="tech-pill">24V Power Delivery</li><li class="tech-pill">Breadboard Prototyping</li><li class="tech-pill">Sensor Integration</li><li class="tech-pill">L298N H-Bridge Drivers</li><li class="tech-pill">Embedded Systems</li></ul>
+        <p class="no-link">🔧 Hardware project — no repo</p>
+      </div>
+        
+      </div>
+    </div></div>
+          <div class="proj-grid">
+    <article class="proj-card" data-reveal>
+      <h3>ChoreQuest</h3>
+      <p class="proj-role">Team Lead &amp; Full-Stack Developer</p>
+      <p class="proj-desc">A gamified, full-stack web application that transforms household chores into an engaging experience — quest progression, achievement tracking, and real-time task assignments to encourage household cooperation.</p>
+      <div class="proj-card-media"><img src="assets/chorequest-dashboard.webp" alt="ChoreQuest household dashboard" loading="lazy" /></div>
+      
+      <ul class="tech-list"><li class="tech-pill">Angular 21</li><li class="tech-pill">Angular Material</li><li class="tech-pill">Django 5 / DRF</li><li class="tech-pill">Firebase / Firestore</li></ul>
+      <div class="proj-links"><a class="btn btn-primary btn-sm" href="https://george-t83.github.io/ChoreQuest/#/dashboard" target="_blank" rel="noopener noreferrer">Live Demo ↗</a><a class="btn btn-ghost btn-sm" href="https://github.com/George-T83/ChoreQuest" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
+    </article>
+    <article class="proj-card" data-reveal>
+      <h3>Cadence AI</h3>
+      <p class="proj-role">AI Music Tutor</p>
+      <p class="proj-desc">An intelligent practice dashboard connecting student musicians with band directors — instructors upload music, students record themselves playing to get instant AI feedback and custom lessons.</p>
+      
+      
+      <ul class="tech-list"><li class="tech-pill">Angular 19</li><li class="tech-pill">Angular Signals</li><li class="tech-pill">Django 5 / DRF</li><li class="tech-pill">SQLite</li><li class="tech-pill">JWT Auth</li></ul>
+      <div class="proj-links"><a class="btn btn-primary btn-sm" href="https://cadence-ai-dcb55.web.app/" target="_blank" rel="noopener noreferrer">Live Demo ↗</a></div>
+    </article>
+    <article class="proj-card" data-reveal>
+      <h3>VitaSync</h3>
+      
+      <p class="proj-desc">An intelligent healthcare sync platform unifying fragmented patient record data and automating clinic appointment scheduling — built for data integrity and high availability.</p>
+      
+      
+      <ul class="tech-list"><li class="tech-pill">Angular 19</li><li class="tech-pill">Angular Material</li><li class="tech-pill">Django REST Framework</li></ul>
+      <p class="no-link">Repo private · no public link yet</p>
+    </article>
+    <article class="proj-card" data-reveal>
+      <h3>ScriptureQuest</h3>
+      
+      <p class="proj-desc">A gamified, Duolingo-style learning platform for Christian theology — strict linear progression, a tamper-proof hearts/XP economy, spaced repetition, and a Socratic AI study partner.</p>
+      
+      
+      <ul class="tech-list"><li class="tech-pill">React + Vite</li><li class="tech-pill">TypeScript</li><li class="tech-pill">Express.js</li><li class="tech-pill">Drizzle ORM + SQLite</li></ul>
+      <p class="no-link">Repo private · no public link yet</p>
+    </article>
+    <article class="proj-card" data-reveal>
+      <h3>Family Tasks</h3>
+      
+      <p class="proj-desc">A real-time synchronized family task management web app — multi-user sync across devices, gamified with XP, streaks, and badges computed server-side so values can't be tampered with client-side.</p>
+      <div class="proj-card-media"><img src="assets/family-tasks-dashboard.png" alt="Family Tasks admin dashboard" loading="lazy" /></div>
+      
+      <ul class="tech-list"><li class="tech-pill">Vue 3</li><li class="tech-pill">Pinia</li><li class="tech-pill">Tailwind CSS</li><li class="tech-pill">Firebase</li><li class="tech-pill">Cloud Functions</li></ul>
+      <div class="proj-links"><a class="btn btn-primary btn-sm" href="https://family-tasks-5d3aa.web.app" target="_blank" rel="noopener noreferrer">Live Demo ↗</a></div>
+    </article>
+    <article class="proj-card" data-reveal>
+      <h3>Fargo Spa &amp; Wellness</h3>
+      <p class="proj-role">Project Manager &amp; Dev Lead · Group Project</p>
+      <p class="proj-desc">A full-stack booking platform for a spa &amp; wellness business, built as a summer course capstone with a teammate. Clients book and pay for appointments online; staff and admins run the business. Served as PM and Dev Lead: wrote requirements docs, reviewed all code, led QA.</p>
+      
+      
+      <ul class="tech-list"><li class="tech-pill">ASP.NET Core Blazor</li><li class="tech-pill">Entity Framework Core</li><li class="tech-pill">SQL Database</li><li class="tech-pill">Bootstrap</li><li class="tech-pill">Stripe</li></ul>
+      <div class="proj-links"><a class="btn btn-primary btn-sm" href="https://fargospa.duckdns.org/" target="_blank" rel="noopener noreferrer">Live Demo ↗</a><a class="btn btn-ghost btn-sm" href="https://github.com/George-T83/Fargo-Spa-and-Wellness" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
+    </article></div>
+        </div>
+      </section>
+
+      <section id="contact" class="section section-alt">
+        <div class="wrap">
+          <h2 class="section-heading" data-reveal>Let's Connect</h2>
+          <p class="contact-lede" data-reveal>Open to software engineering internships and collaborations in AI and embedded systems.</p>
+          <ul class="contact-grid">
+            <li class="contact-card" data-reveal><span class="contact-label">Email</span><a href="mailto:george.tannious@gmail.com">george.tannious@gmail.com</a></li>
+            <li class="contact-card" data-reveal><span class="contact-label">LinkedIn</span><a href="https://linkedin.com/in/george-tannious" target="_blank" rel="noopener noreferrer">linkedin.com/in/george-tannious</a></li>
+            <li class="contact-card" data-reveal><span class="contact-label">Resume</span><a href="mailto:george.tannious@gmail.com?subject=Resume%20Request">Available on request</a></li>
+            <li class="contact-card" data-reveal><span class="contact-label">GitHub</span><a href="https://github.com/George-T83" target="_blank" rel="noopener noreferrer">github.com/George-T83</a></li>
+          </ul>
+          <div class="github-graph-card" data-reveal id="github-graph-card">
+            <span class="contact-label">GitHub Activity</span>
+            <a href="https://github.com/George-T83" target="_blank" rel="noopener noreferrer">
+              <img class="github-graph" src="https://ghchart.rshah.org/4f46e5/George-T83" alt="George Tannious's GitHub contribution graph" loading="lazy" onerror="document.getElementById('github-graph-card').style.display='none'" />
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div class="wrap"><p>&copy; 2026 George Tannious — SaaS Aurora</p></div></footer>
+</div>
+<script>
+(function () {
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Staggered scroll-reveal for [data-reveal] elements, grouped by shared parent
+  // so siblings (stat tiles, skill cards, project cards) cascade in together.
+  var groups = new Map();
+  document.querySelectorAll("[data-reveal]").forEach(function (el) {
+    var siblings = groups.get(el.parentElement) || [];
+    siblings.push(el);
+    groups.set(el.parentElement, siblings);
+  });
+  groups.forEach(function (siblings) {
+    siblings.forEach(function (el, i) {
+      el.style.transitionDelay = reduceMotion ? "0ms" : Math.min(i * 70, 420) + "ms";
+    });
+  });
+
+  if (reduceMotion) {
+    document.querySelectorAll("[data-reveal]").forEach(function (el) { el.classList.add("is-visible"); });
+  } else if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -8% 0px" }
+    );
+    document.querySelectorAll("[data-reveal]").forEach(function (el) { io.observe(el); });
+  } else {
+    document.querySelectorAll("[data-reveal]").forEach(function (el) { el.classList.add("is-visible"); });
+  }
+
+  // Count-up stat numbers, triggered once when they scroll into view.
+  if (!reduceMotion && "IntersectionObserver" in window) {
+    var countEls = document.querySelectorAll("[data-countup], [data-countup-decimal]");
+    if (countEls.length) {
+      var countIo = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            var el = entry.target;
+            countIo.unobserve(el);
+            var isDecimal = el.hasAttribute("data-countup-decimal");
+            var target = parseFloat(el.getAttribute(isDecimal ? "data-countup-decimal" : "data-countup"));
+            var original = isDecimal ? el.getAttribute("data-countup-decimal") : el.getAttribute("data-countup");
+            var start = performance.now();
+            var duration = 900;
+            function tick(now) {
+              var p = Math.min((now - start) / duration, 1);
+              var eased = 1 - Math.pow(1 - p, 3);
+              var val = target * eased;
+              el.textContent = isDecimal ? val.toFixed(1) : Math.round(val).toString();
+              if (p < 1) requestAnimationFrame(tick);
+              else el.textContent = original;
+            }
+            requestAnimationFrame(tick);
+          });
+        },
+        { threshold: 0.6 }
+      );
+      countEls.forEach(function (el) { countIo.observe(el); });
+    }
+  } else {
+    document.querySelectorAll("[data-countup]").forEach(function (el) { el.textContent = el.getAttribute("data-countup"); });
+    document.querySelectorAll("[data-countup-decimal]").forEach(function (el) { el.textContent = el.getAttribute("data-countup-decimal"); });
+  }
+
+  // Top scroll-progress bar.
+  var bar = document.querySelector(".scroll-progress");
+  if (bar) {
+    var updateBar = function () {
+      var h = document.documentElement;
+      var scrolled = h.scrollTop;
+      var max = h.scrollHeight - h.clientHeight;
+      bar.style.width = (max > 0 ? (scrolled / max) * 100 : 0) + "%";
+    };
+    document.addEventListener("scroll", updateBar, { passive: true });
+    updateBar();
+  }
+
+  // Subtle hero glow parallax — disabled under reduced motion.
+  if (!reduceMotion) {
+    var glow = document.querySelector(".hero-glow");
+    if (glow) {
+      var updateGlow = function () {
+        var y = window.scrollY;
+        if (y < window.innerHeight * 1.2) {
+          glow.style.transform = "translateY(" + (y * 0.18).toFixed(1) + "px)";
+        }
+      };
+      document.addEventListener("scroll", updateGlow, { passive: true });
+      updateGlow();
+    }
+  }
+
+  // Cursor-follow spotlight on cards — a CSS var updated on mousemove, read
+  // by a ::before radial-gradient in base.css.js. Pure hover decoration.
+  if (window.matchMedia("(hover: hover)").matches) {
+    document.querySelectorAll(".proj-card, .skill-card, .contact-card, .edu-card, .proj-featured").forEach(function (card) {
+      card.addEventListener("mousemove", function (e) {
+        var rect = card.getBoundingClientRect();
+        card.style.setProperty("--mx", e.clientX - rect.left + "px");
+        card.style.setProperty("--my", e.clientY - rect.top + "px");
+      });
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
