@@ -178,6 +178,104 @@ a:focus-visible, button:focus-visible, label:focus-within { outline: 2.5px solid
 
 
     .hero-glow { background: radial-gradient(700px 420px at 12% -10%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 60%), radial-gradient(600px 420px at 92% 5%, color-mix(in srgb, var(--accent-2) 12%, transparent), transparent 60%); }
+
+    /* TerraCleaner Media & Hardware Section */
+    .tc-details {
+      margin-top: 24px;
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
+    }
+    .tc-section-header {
+      margin-bottom: 14px;
+    }
+    .tc-section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 0 0 4px;
+      color: var(--text);
+    }
+    .tc-section-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+    .tc-schematic-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 24px;
+    }
+    .tc-schematic-wrap {
+      border-radius: 12px;
+      overflow: hidden;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+    }
+    .tc-schematic-wrap img {
+      width: 100%;
+      max-height: 420px;
+      object-fit: contain;
+    }
+    .tc-schematic-meta {
+      padding-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .tc-schematic-meta p {
+      margin: 0;
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      flex: 1 1 240px;
+    }
+    .tc-parts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+    }
+    .tc-parts-group {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 20px;
+    }
+    .tc-parts-group h5 {
+      margin: 0 0 10px;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent-2);
+      font-family: var(--font-display, sans-serif);
+    }
+    .tc-parts-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .tc-parts-list li {
+      font-size: 0.82rem;
+      line-height: 1.45;
+    }
+    .tc-parts-list strong {
+      color: var(--text);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 2px;
+    }
+    .tc-parts-list span {
+      color: var(--text-muted);
+    }
   </style>
 </head>
 <body>
@@ -304,7 +402,7 @@ a:focus-visible, button:focus-visible, label:focus-within { outline: 2.5px solid
         <div class="proj-featured-media"><img src="assets/syllabus-sense-degree-compass.png" alt="Syllabus Sense Degree Compass — a whole-degree progress planner" loading="lazy" /></div>
       </div>
     </div>
-    <div class="proj-featured proj-featured-solo" data-reveal>
+    <div class="proj-featured" data-reveal id="terracleaner">
       <div class="proj-featured-grid">
         
       <div class="proj-featured-body">
@@ -316,9 +414,73 @@ a:focus-visible, button:focus-visible, label:focus-within { outline: 2.5px solid
     <div class="award-ribbon">🏆 Award-Winning — 4 Awards</div>
     <ul class="award-list"><li class="award-pill">🏅 SAE Mobility Award</li><li class="award-pill">🏅 Otter Tail Power Award</li><li class="award-pill">🏅 Xcel Energy Award</li><li class="award-pill">🏅 State &amp; Regional Science Fair Award</li></ul>
         <ul class="tech-list"><li class="tech-pill">C++</li><li class="tech-pill">PWM Motor Control</li><li class="tech-pill">24V Power Delivery</li><li class="tech-pill">Breadboard Prototyping</li><li class="tech-pill">Sensor Integration</li><li class="tech-pill">L298N H-Bridge Drivers</li><li class="tech-pill">Embedded Systems</li></ul>
-        <p class="no-link">🔧 Hardware project — no repo</p>
+        <div class="proj-links"><a class="btn btn-primary btn-sm" href="assets/terracleaner/SidewalkRobotElectricalSchematic.pdf" download="SidewalkRobotElectricalSchematic.pdf">Download Schematic (PDF) ↓</a><span class="no-link">🔧 Hardware project — no repo</span></div>
       </div>
-        
+        <div class="proj-featured-media"><img src="assets/terracleaner/terracleaner-hero.jpg" alt="TerraCleaner autonomous litter-collection robot prototype" loading="lazy" /></div>
+      </div>
+
+      <div class="tc-details">
+        <div class="tc-schematic-card">
+          <div class="tc-section-header">
+            <h4 class="tc-section-title">Electrical System Schematic</h4>
+            <p class="tc-section-subtitle">Single-line circuit diagram for the 24V drivetrain and logic subsystems</p>
+          </div>
+          <div class="tc-schematic-wrap">
+            <img src="assets/terracleaner/terracleaner-schematic.png" alt="TerraCleaner electrical system schematic showing Arduino, L298N motor drivers, and 24V supply" loading="lazy" />
+          </div>
+          <div class="tc-schematic-meta">
+            <p>Wiring schematic illustrating the Arduino control board, dual L298N motor drivers, 24V primary drive rail, isolated 9V logic rail, ultrasonic distance sensor, and 4-motor drive configuration.</p>
+            <a class="btn btn-ghost btn-sm" href="assets/terracleaner/SidewalkRobotElectricalSchematic.pdf" download="SidewalkRobotElectricalSchematic.pdf">Download PDF ↓</a>
+          </div>
+        </div>
+
+        <div class="tc-section-header">
+          <h4 class="tc-section-title">Robot Parts &amp; Hardware Overview</h4>
+          <p class="tc-section-subtitle">Consolidated bill of materials across all electrical, mechanical, and structural subsystems</p>
+        </div>
+        <div class="tc-parts-grid">
+          <div class="tc-parts-group">
+            <h5>Control &amp; Logic</h5>
+            <ul class="tc-parts-list">
+              <li><strong>Arduino Mega 2560 (Elegoo Starter Kit)</strong><span>Central microcontroller managing PWM motor control signals, digital I/O routing, and sensor polling.</span></li>
+              <li><strong>Arduino Uno R4 Wi-Fi</strong><span>Secondary microcontroller board used for wireless communication tests and cloud telemetry evaluation.</span></li>
+            </ul>
+          </div>
+          <div class="tc-parts-group">
+            <h5>Drive &amp; Actuation</h5>
+            <ul class="tc-parts-list">
+              <li><strong>L298N Dual H-Bridge Motor Drivers (x2)</strong><span>Dual-channel motor controller boards providing directional control and PWM speed regulation for drive and collection motors.</span></li>
+              <li><strong>JGB37-545 24V DC Gear Motors (x6)</strong><span>High-torque DC gear motors (320 RPM drivetrain units for locomotion; 600 RPM units for litter collection intake rollers).</span></li>
+              <li><strong>Timing Pulleys &amp; 6mm Belts</strong><span>Synchronous toothed pulleys and belts transmitting rotational torque to the collection intake rollers.</span></li>
+            </ul>
+          </div>
+          <div class="tc-parts-group">
+            <h5>Power &amp; Wiring</h5>
+            <ul class="tc-parts-list">
+              <li><strong>24V Battery Pack</strong><span>High-capacity rechargeable battery pack delivering primary power to the 24V DC gear motors.</span></li>
+              <li><strong>9V Batteries &amp; 3×AA Battery Holders</strong><span>Isolated auxiliary battery supplies powering logic rails for the microcontroller and sensors.</span></li>
+              <li><strong>18-Gauge Heavy-Duty Wire</strong><span>Low-resistance automotive-grade wire connecting high-current motor loops and power rails.</span></li>
+              <li><strong>Solderless Breadboards &amp; Dupont Jumpers</strong><span>830-point prototyping breadboards and multicolored jumper wire kit for circuit routing and common ground distribution.</span></li>
+            </ul>
+          </div>
+          <div class="tc-parts-group">
+            <h5>Sensors &amp; Telemetry</h5>
+            <ul class="tc-parts-list">
+              <li><strong>HC-05 Bluetooth Serial Module</strong><span>Wireless serial transceiver enabling wireless test commands and remote telemetry monitoring.</span></li>
+              <li><strong>HC-SR04 Ultrasonic Distance Sensor</strong><span>Front-facing sonar sensor measuring clearance for obstacle detection logic.</span></li>
+            </ul>
+          </div>
+          <div class="tc-parts-group">
+            <h5>Chassis &amp; Mechanical</h5>
+            <ul class="tc-parts-list">
+              <li><strong>Modular 3D-Printed Shell</strong><span>Multi-piece lightweight filament enclosure protecting internal electronics and shaping the collection hopper.</span></li>
+              <li><strong>Structural Aluminum Frame</strong><span>500mm flat aluminum plates, corner L-brackets, and 5mm aluminum rods providing rigid chassis support.</span></li>
+              <li><strong>5.5-Inch Solid Rubber Wheels (x4)</strong><span>Puncture-proof outdoor wheels providing traction and ground clearance on sidewalk surfaces.</span></li>
+              <li><strong>Flanged Ball Bearings (6mm ID) &amp; Lock Collars</strong><span>Low-friction axle bearings and shaft lock bushings securing drive assemblies under load.</span></li>
+              <li><strong>M3 &amp; M4 Fastener Hardware Sets</strong><span>Complete assortment of machine screws, lock nuts, washers, and wrenches securing structural joints.</span></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div></div>
           <div class="proj-grid">
