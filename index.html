@@ -147,7 +147,7 @@ a:focus-visible, button:focus-visible, label:focus-within { outline: 2.5px solid
 .contact-grid { list-style: none; margin: 30px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
 .contact-card { position: relative; overflow: hidden; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 20px 22px; }
 .contact-label { display: block; font-size: 0.75rem; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
-.contact-card a { font-weight: 700; word-break: break-word; }
+.contact-card a { font-weight: 700; word-break: normal; overflow-wrap: break-word; }
 .contact-card a:hover { color: var(--accent); }
 
 .proj-card, .skill-card, .contact-card, .edu-card, .proj-featured {
@@ -159,9 +159,6 @@ a:focus-visible, button:focus-visible, label:focus-within { outline: 2.5px solid
 }
 .skip-link { position: absolute; top: -60px; left: 12px; z-index: 200; background: var(--accent); color: var(--on-accent); padding: 12px 20px; border-radius: 10px; font-weight: 700; font-size: 0.9rem; transition: top 0.2s ease; }
 .skip-link:focus { top: 12px; }
-
-.github-graph-card { position: relative; overflow-x: auto; margin-top: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 20px 22px; }
-.github-graph { display: block; min-width: 640px; width: 100%; margin-top: 10px; }
 
 .site-footer { padding-block: 28px; border-top: 1px solid var(--border); }
 .site-footer p { margin: 0; font-size: 0.85rem; color: var(--text-faint); text-align: center; }
@@ -275,6 +272,168 @@ a:focus-visible, button:focus-visible, label:focus-within { outline: 2.5px solid
     }
     .tc-parts-list span {
       color: var(--text-muted);
+    }
+
+    /* Lightbox Styles */
+    img:not(#lightbox-img) {
+      cursor: zoom-in;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: none;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
+    }
+
+    .lightbox.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .lightbox-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 11, 24, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .lightbox-toolbar {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(23, 26, 43, 0.82);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 999px;
+      padding: 6px 10px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+    }
+
+    .lightbox-btn {
+      background: transparent;
+      border: none;
+      color: #f0f2fa;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
+    }
+
+    .lightbox-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+    }
+
+    .lightbox-btn:active {
+      transform: scale(0.95);
+    }
+
+    .lightbox-btn:focus-visible {
+      outline: 2px solid var(--accent, #7dd3fc);
+      outline-offset: 2px;
+    }
+
+    .lightbox-scale-indicator {
+      font-size: 0.78rem;
+      font-weight: 700;
+      font-family: var(--font-body, system-ui, sans-serif);
+      color: #eef0ff;
+      padding-inline: 4px;
+      min-width: 44px;
+      text-align: center;
+    }
+
+    .lightbox-stage {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      touch-action: none;
+    }
+
+    .lightbox-img {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 6px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.65);
+      transform-origin: center center;
+      transition: transform 0.12s ease-out;
+      cursor: grab;
+      will-change: transform;
+    }
+
+    .lightbox-stage.is-dragging .lightbox-img {
+      cursor: grabbing;
+      transition: none;
+    }
+
+    .lightbox-caption {
+      position: absolute;
+      bottom: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      max-width: min(85vw, 680px);
+      padding: 8px 18px;
+      border-radius: 999px;
+      background: rgba(23, 26, 43, 0.82);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: #eef0ff;
+      font-size: 0.84rem;
+      text-align: center;
+      pointer-events: none;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .lightbox-caption:empty {
+      display: none;
+    }
+
+    @media (max-width: 600px) {
+      .lightbox-toolbar {
+        top: 12px;
+        right: 12px;
+        gap: 4px;
+        padding: 4px 6px;
+      }
+      .lightbox-btn {
+        width: 34px;
+        height: 34px;
+      }
+      .lightbox-caption {
+        bottom: 12px;
+        font-size: 0.75rem;
+        padding: 6px 12px;
+        white-space: normal;
+      }
     }
   </style>
 </head>
@@ -544,17 +703,11 @@ a:focus-visible, button:focus-visible, label:focus-within { outline: 2.5px solid
           <h2 class="section-heading" data-reveal>Let's Connect</h2>
           <p class="contact-lede" data-reveal>Open to software or electrical engineering internships and collaborations in AI and embedded systems.</p>
           <ul class="contact-grid">
-            <li class="contact-card" data-reveal><span class="contact-label">Email</span><a href="mailto:george.tannious@gmail.com">george.tannious@gmail.com</a></li>
+            <li class="contact-card" data-reveal><span class="contact-label">Email</span><a href="mailto:george.tannious@gmail.com">george.tannious@<wbr>gmail.com</a></li>
             <li class="contact-card" data-reveal><span class="contact-label">LinkedIn</span><a href="https://www.linkedin.com/in/george-tannious/" target="_blank" rel="noopener noreferrer">linkedin.com/in/george-tannious</a></li>
             <li class="contact-card" data-reveal><span class="contact-label">Resume</span><a href="mailto:george.tannious@gmail.com?subject=Resume%20Request">Available on request</a></li>
             <li class="contact-card" data-reveal><span class="contact-label">GitHub</span><a href="https://github.com/George-T83" target="_blank" rel="noopener noreferrer">github.com/George-T83</a></li>
           </ul>
-          <div class="github-graph-card" data-reveal id="github-graph-card">
-            <span class="contact-label">GitHub Activity</span>
-            <a href="https://github.com/George-T83" target="_blank" rel="noopener noreferrer">
-              <img class="github-graph" src="https://ghchart.rshah.org/4f46e5/George-T83" alt="George Tannious's GitHub contribution graph" loading="lazy" onerror="document.getElementById('github-graph-card').style.display='none'" />
-            </a>
-          </div>
         </div>
       </section>
     </main>
@@ -676,6 +829,6 @@ a:focus-visible, button:focus-visible, label:focus-within { outline: 2.5px solid
   }
 })();
 </script>
-
+<script src="scripts/lightbox.js"></script>
 </body>
 </html>
