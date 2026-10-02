@@ -21,6 +21,7 @@
   --accent: #4f46e5; --accent-2: #0ea5a4;
   --border: #e4e6f2; --border-strong: #c7cbe8; --on-accent: #ffffff;
   --card-hover-shadow: 0 16px 32px -18px color-mix(in srgb, var(--text) 35%, transparent);
+  --nav-height: 56px;
   color-scheme: light;
 }
 .dm-toggle-input:checked ~ .page {
@@ -34,7 +35,7 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--bg); }
+body { margin: 0; background: var(--bg); font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif); }
 
 .scroll-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); z-index: 100; }
 
@@ -85,7 +86,7 @@ a:focus-visible, button:focus-visible, label:focus-within { outline: 2.5px solid
 .btn-ghost:hover { border-color: var(--accent); }
 .btn-sm { padding: 9px 16px; font-size: 0.82rem; }
 
-.section { padding-block: 80px; scroll-margin-top: 76px; }
+.section, section[id] { padding-block: 80px; scroll-margin-top: calc(var(--nav-height, 56px) + 1.5rem); }
 .section-alt { background: var(--surface-alt); }
 .eyebrow { font-family: var(--font-mono, 'Plus Jakarta Sans', sans-serif); color: var(--accent-2); text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.85rem; margin-bottom: 16px; }
 .section-heading { margin-bottom: 36px; }
@@ -111,6 +112,9 @@ a:focus-visible, button:focus-visible, label:focus-within { outline: 2.5px solid
 .badge-alt { color: var(--accent-2); }
 
 .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
+@media (min-width: 900px) {
+  .skills-grid { grid-template-columns: repeat(3, 1fr); }
+}
 .skill-card { position: relative; overflow: hidden; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 24px; }
 .skill-card h3 { font-size: 1.02rem; color: var(--accent-2); margin-bottom: 14px; }
 .pill-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
@@ -134,37 +138,41 @@ a:focus-visible, button:focus-visible, label:focus-within { outline: 2.5px solid
 .dm-toggle-input:checked ~ .page .award-pill { color: #ffd98a; background: color-mix(in srgb, #ffb648 20%, transparent); border-color: color-mix(in srgb, #ffb648 40%, transparent); }
 .proj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
 .proj-card { position: relative; overflow: hidden; background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 26px; display: flex; flex-direction: column; }
-.proj-card-media { margin: 4px 0 14px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+.proj-card-media { margin: 0 0 14px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
 .proj-card-media img { width: 100%; aspect-ratio: 16/10; object-fit: cover; object-position: top; }
 .proj-role { font-size: 0.8rem; color: var(--accent); margin-bottom: 8px; }
-.proj-desc { flex-grow: 1; }
+.proj-desc { flex-grow: 0; margin-bottom: 14px; }
 .tech-list { list-style: none; margin: 0 0 6px; padding: 0; display: flex; flex-wrap: wrap; gap: 7px; }
 .tech-pill { font-size: 0.74rem; padding: 4px 10px; border-radius: 999px; background: var(--surface-alt); color: var(--text-muted); border: 1px solid var(--border); }
-.proj-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+.proj-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; padding-top: 14px; }
 .no-link { font-size: 0.78rem; color: var(--text-faint); font-style: italic; }
+.proj-links .no-link { margin: 0; align-self: center; }
 
 .contact-lede { max-width: 520px; }
 .contact-grid { list-style: none; margin: 30px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
 .contact-card { position: relative; overflow: hidden; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 20px 22px; }
 .contact-label { display: block; font-size: 0.75rem; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
-.contact-card a { font-weight: 700; word-break: break-word; }
+.contact-card a { font-weight: 700; word-break: normal; overflow-wrap: break-word; }
 .contact-card a:hover { color: var(--accent); }
 
 .proj-card, .skill-card, .contact-card, .edu-card, .proj-featured {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 0s;
 }
 .proj-card:hover, .skill-card:hover, .contact-card:hover, .edu-card:hover, .proj-featured:hover {
   transform: translateY(-4px);
   box-shadow: var(--card-hover-shadow);
+  transition-delay: 0s !important;
+}
+#terracleaner:has(.tc-details:hover) {
+  transform: none;
+  box-shadow: none;
 }
 .skip-link { position: absolute; top: -60px; left: 12px; z-index: 200; background: var(--accent); color: var(--on-accent); padding: 12px 20px; border-radius: 10px; font-weight: 700; font-size: 0.9rem; transition: top 0.2s ease; }
 .skip-link:focus { top: 12px; }
 
-.github-graph-card { position: relative; overflow-x: auto; margin-top: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 20px 22px; }
-.github-graph { display: block; min-width: 640px; width: 100%; margin-top: 10px; }
-
 .site-footer { padding-block: 28px; border-top: 1px solid var(--border); }
-.site-footer p { margin: 0; font-size: 0.85rem; color: var(--text-faint); text-align: center; }
+.site-footer p { margin: 0; font-size: 0.85rem; color: var(--text-muted); text-align: center; }
 
 @media (max-width: 780px) {
   .hero-inner, .about-inner { grid-template-columns: 1fr; }
@@ -175,9 +183,349 @@ a:focus-visible, button:focus-visible, label:focus-within { outline: 2.5px solid
   .proj-featured-grid { grid-template-columns: 1fr; }
   .proj-featured-body { padding: 22px 20px 8px; }
 }
+@media (max-width: 480px) {
+  .edu-meta .badge { border-radius: 8px; line-height: 1.4; }
+}
+@media (max-width: 400px) {
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+}
 
 
     .hero-glow { background: radial-gradient(700px 420px at 12% -10%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 60%), radial-gradient(600px 420px at 92% 5%, color-mix(in srgb, var(--accent-2) 12%, transparent), transparent 60%); }
+
+    /* TerraCleaner Media & Hardware Section */
+    .tc-details {
+      margin-top: 24px;
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
+    }
+    .tc-section-header {
+      margin-bottom: 14px;
+    }
+    .tc-section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 0 0 4px;
+      color: var(--text);
+    }
+    .tc-section-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+    .tc-schematic-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+    .tc-schematic-media {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 10px 24px -14px color-mix(in srgb, var(--text) 20%, transparent);
+    }
+    .tc-schematic-media img {
+      width: 100%;
+      height: auto;
+      max-height: 480px;
+      object-fit: contain;
+      display: block;
+    }
+    .tc-schematic-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .tc-schematic-content .tc-section-header {
+      margin-bottom: 14px;
+    }
+    .tc-schematic-points {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+    .tc-schematic-points li {
+      font-size: 0.86rem;
+      line-height: 1.5;
+      color: var(--text-muted);
+      position: relative;
+      padding-left: 20px;
+    }
+    .tc-schematic-points li::before {
+      content: "•";
+      position: absolute;
+      left: 6px;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 1.15rem;
+      line-height: 1.2;
+    }
+    .tc-schematic-points strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+    .tc-parts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+    }
+    .tc-parts-group {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 20px;
+      break-inside: avoid;
+    }
+    @media (min-width: 900px) {
+      .tc-parts-grid {
+        display: block;
+        column-count: 3;
+        column-gap: 14px;
+      }
+      .tc-parts-group {
+        margin-bottom: 14px;
+      }
+    }
+    .tc-parts-group h5 {
+      margin: 0 0 12px;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent-2);
+      font-family: var(--font-display, sans-serif);
+    }
+    .tc-parts-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .tc-parts-list li {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 11px 14px;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+      transition-delay: 0s;
+      cursor: default;
+    }
+    .tc-parts-list li:hover {
+      transform: translateY(-2px);
+      border-color: var(--border-strong);
+      box-shadow: 0 6px 14px -6px color-mix(in srgb, var(--text) 25%, transparent);
+      background: color-mix(in srgb, var(--surface) 85%, var(--surface-alt));
+      transition-delay: 0s !important;
+    }
+    .tc-parts-list strong {
+      color: var(--text);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 2px;
+    }
+    .tc-parts-list span {
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 780px) {
+      .tc-schematic-card {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 16px;
+      }
+    }
+
+    /* Lightbox Styles */
+    img:not(#lightbox-img) {
+      cursor: zoom-in;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: none;
+      font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
+    }
+
+    .lightbox.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .lightbox-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 11, 24, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .lightbox-toolbar {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(23, 26, 43, 0.82);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 999px;
+      padding: 6px 10px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+    }
+
+    .lightbox-btn {
+      background: transparent;
+      border: none;
+      color: #f0f2fa;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
+    }
+
+    .lightbox-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+    }
+
+    .lightbox-btn:active {
+      transform: scale(0.95);
+    }
+
+    .lightbox-btn:focus-visible {
+      outline: 2px solid var(--accent, #7dd3fc);
+      outline-offset: 2px;
+    }
+
+    .lightbox-scale-indicator {
+      font-size: 0.78rem;
+      font-weight: 700;
+      font-family: var(--font-body, system-ui, sans-serif);
+      color: #eef0ff;
+      padding-inline: 4px;
+      min-width: 44px;
+      text-align: center;
+    }
+
+    .lightbox-stage {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      touch-action: none;
+    }
+
+    .lightbox-img {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 6px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.65);
+      transform-origin: center center;
+      transition: transform 0.12s ease-out;
+      cursor: grab;
+      will-change: transform;
+    }
+
+    .lightbox-stage.is-dragging .lightbox-img {
+      cursor: grabbing;
+      transition: none;
+    }
+
+    .lightbox-caption {
+      position: absolute;
+      bottom: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      width: max-content;
+      max-width: min(88vw, 680px);
+      box-sizing: border-box;
+      padding: 8px 18px;
+      border-radius: 12px;
+      background: rgba(15, 17, 30, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: #eef0ff;
+      font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
+      font-size: 0.82rem;
+      line-height: 1.45;
+      text-align: center;
+      pointer-events: none;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+
+      /* Multi-line clamp: up to 2 lines */
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: normal;
+      word-break: normal;
+      overflow-wrap: break-word;
+    }
+
+    .lightbox-caption:empty {
+      display: none;
+    }
+
+    @media (max-width: 600px) {
+      .lightbox-toolbar {
+        top: 12px;
+        right: 12px;
+        gap: 4px;
+        padding: 4px 6px;
+      }
+      .lightbox-btn {
+        width: 34px;
+        height: 34px;
+      }
+      .lightbox-caption {
+        bottom: 12px;
+        font-size: 0.76rem;
+        padding: 6px 14px;
+        max-width: 92vw;
+      }
+    }
   </style>
 </head>
 <body>
@@ -304,7 +652,7 @@ a:focus-visible, button:focus-visible, label:focus-within { outline: 2.5px solid
         <div class="proj-featured-media"><img src="assets/syllabus-sense-degree-compass.png" alt="Syllabus Sense Degree Compass — a whole-degree progress planner" loading="lazy" /></div>
       </div>
     </div>
-    <div class="proj-featured proj-featured-solo" data-reveal>
+    <div class="proj-featured" data-reveal id="terracleaner">
       <div class="proj-featured-grid">
         
       <div class="proj-featured-body">
@@ -316,9 +664,77 @@ a:focus-visible, button:focus-visible, label:focus-within { outline: 2.5px solid
     <div class="award-ribbon">🏆 Award-Winning — 4 Awards</div>
     <ul class="award-list"><li class="award-pill">🏅 SAE Mobility Award</li><li class="award-pill">🏅 Otter Tail Power Award</li><li class="award-pill">🏅 Xcel Energy Award</li><li class="award-pill">🏅 State &amp; Regional Science Fair Award</li></ul>
         <ul class="tech-list"><li class="tech-pill">C++</li><li class="tech-pill">PWM Motor Control</li><li class="tech-pill">24V Power Delivery</li><li class="tech-pill">Breadboard Prototyping</li><li class="tech-pill">Sensor Integration</li><li class="tech-pill">L298N H-Bridge Drivers</li><li class="tech-pill">Embedded Systems</li></ul>
-        <p class="no-link">🔧 Hardware project — no repo</p>
+        </div>
+        <div class="proj-featured-media"><img src="assets/terracleaner/terracleaner-hero.jpg" alt="TerraCleaner autonomous litter-collection robot prototype" loading="lazy" /></div>
       </div>
-        
+
+      <div class="tc-details">
+        <div class="tc-schematic-card">
+          <div class="tc-schematic-media">
+            <img src="assets/terracleaner/terracleaner-schematic-trimmed.png" alt="TerraCleaner electrical system schematic showing Arduino, dual L298N motor drivers, 24V drive rail, and sensor wiring" loading="lazy" />
+          </div>
+          <div class="tc-schematic-content">
+            <div class="tc-section-header">
+              <h4 class="tc-section-title">Electrical System Schematic</h4>
+              <p class="tc-section-subtitle">Single-line circuit diagram for drivetrain &amp; logic subsystems</p>
+            </div>
+            <ul class="tc-schematic-points">
+              <li><strong>Arduino Control Board:</strong> Central logic processing PWM motor signals, digital I/O routing, and sensor polling.</li>
+              <li><strong>Dual L298N Motor Drivers:</strong> Dedicated dual-channel H-bridges regulating speed and directional control.</li>
+              <li><strong>24V Primary Drive Rail:</strong> High-capacity power delivery powering the 4-motor drive configuration.</li>
+              <li><strong>Isolated 9V Logic Rail:</strong> Dedicated auxiliary rail isolating microcontroller power from motor electrical noise.</li>
+              <li><strong>Ultrasonic Distance Sensor:</strong> Front-mounted HC-SR04 sonar module interfaced for obstacle clearance detection.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tc-section-header">
+          <h4 class="tc-section-title">Robot Parts &amp; Hardware Overview</h4>
+          <p class="tc-section-subtitle">Consolidated bill of materials across all electrical, mechanical, and structural subsystems</p>
+        </div>
+        <div class="tc-parts-grid">
+          <div class="tc-parts-group">
+            <h5>Control &amp; Logic</h5>
+            <ul class="tc-parts-list">
+              <li><strong>Arduino Mega 2560</strong><span>Central microcontroller managing PWM motor control signals, digital I/O routing, and sensor polling.</span></li>
+              <li><strong>Arduino Uno R4 Wi-Fi</strong><span>Secondary microcontroller board used for wireless communication tests and cloud telemetry evaluation.</span></li>
+            </ul>
+          </div>
+          <div class="tc-parts-group">
+            <h5>Drive &amp; Actuation</h5>
+            <ul class="tc-parts-list">
+              <li><strong>L298N Dual H-Bridge Motor Drivers (x2)</strong><span>Dual-channel motor controller boards providing directional control and PWM speed regulation for drive and collection motors.</span></li>
+              <li><strong>JGB37-545 24V DC Gear Motors (x6)</strong><span>High-torque DC gear motors (320 RPM drivetrain units for locomotion; 600 RPM units for litter collection intake rollers).</span></li>
+              <li><strong>Timing Pulleys &amp; 6mm Belts</strong><span>Synchronous toothed pulleys and belts transmitting rotational torque to the collection intake rollers.</span></li>
+            </ul>
+          </div>
+          <div class="tc-parts-group">
+            <h5>Power &amp; Wiring</h5>
+            <ul class="tc-parts-list">
+              <li><strong>24V Battery Pack</strong><span>High-capacity rechargeable battery pack delivering primary power to the 24V DC gear motors.</span></li>
+              <li><strong>9V Batteries &amp; 3×AA Battery Holders</strong><span>Isolated auxiliary battery supplies powering logic rails for the microcontroller and sensors.</span></li>
+              <li><strong>18-Gauge Heavy-Duty Wire</strong><span>Low-resistance automotive-grade wire connecting high-current motor loops and power rails.</span></li>
+              <li><strong>Solderless Breadboards &amp; Dupont Jumpers</strong><span>830-point prototyping breadboards and multicolored jumper wire kit for circuit routing and common ground distribution.</span></li>
+            </ul>
+          </div>
+          <div class="tc-parts-group">
+            <h5>Sensors &amp; Telemetry</h5>
+            <ul class="tc-parts-list">
+              <li><strong>HC-05 Bluetooth Serial Module</strong><span>Wireless serial transceiver enabling wireless test commands and remote telemetry monitoring.</span></li>
+              <li><strong>HC-SR04 Ultrasonic Distance Sensor</strong><span>Front-facing sonar sensor measuring clearance for obstacle detection logic.</span></li>
+            </ul>
+          </div>
+          <div class="tc-parts-group">
+            <h5>Chassis &amp; Mechanical</h5>
+            <ul class="tc-parts-list">
+              <li><strong>Modular 3D-Printed Shell</strong><span>Multi-piece lightweight filament enclosure protecting internal electronics and shaping the collection hopper.</span></li>
+              <li><strong>Structural Aluminum Frame</strong><span>500mm flat aluminum plates, corner L-brackets, and 5mm aluminum rods providing rigid chassis support.</span></li>
+              <li><strong>5.5-Inch Solid Rubber Wheels (x4)</strong><span>Puncture-proof outdoor wheels providing traction and ground clearance on sidewalk surfaces.</span></li>
+              <li><strong>Flanged Ball Bearings (6mm ID) &amp; Lock Collars</strong><span>Low-friction axle bearings and shaft lock bushings securing drive assemblies under load.</span></li>
+              <li><strong>M3 &amp; M4 Fastener Hardware Sets</strong><span>Complete assortment of machine screws, lock nuts, washers, and wrenches securing structural joints.</span></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div></div>
           <div class="proj-grid">
@@ -335,32 +751,29 @@ a:focus-visible, button:focus-visible, label:focus-within { outline: 2.5px solid
       <h3>Cadence AI</h3>
       <p class="proj-role">AI Music Tutor</p>
       <p class="proj-desc">An intelligent practice dashboard connecting student musicians with band directors — instructors upload music, students record themselves playing to get instant AI feedback and custom lessons.</p>
-      
-      
+      <div class="proj-card-media"><img src="assets/cadence-ai-dashboard.png" alt="Cadence AI practice room dashboard" loading="lazy" /></div>
       <ul class="tech-list"><li class="tech-pill">Angular 19</li><li class="tech-pill">Angular Signals</li><li class="tech-pill">Django 5 / DRF</li><li class="tech-pill">SQLite</li><li class="tech-pill">JWT Auth</li></ul>
       <div class="proj-links"><a class="btn btn-primary btn-sm" href="https://cadence-ai-dcb55.web.app/" target="_blank" rel="noopener noreferrer">Live Demo ↗</a></div>
     </article>
     <article class="proj-card" data-reveal>
       <h3>VitaSync</h3>
-      
+      <p class="proj-role">Full-Stack Developer</p>
       <p class="proj-desc">An intelligent healthcare sync platform unifying fragmented patient record data and automating clinic appointment scheduling — built for data integrity and high availability.</p>
-      
-      
+      <div class="proj-card-media"><img src="assets/vitasync-banner.png" alt="VitaSync healthcare synchronization platform" loading="lazy" /></div>
       <ul class="tech-list"><li class="tech-pill">Angular 19</li><li class="tech-pill">Angular Material</li><li class="tech-pill">Django REST Framework</li></ul>
-      <p class="no-link">Repo private · no public link yet</p>
+      <div class="proj-links"><p class="no-link">Repo private · no public link yet</p></div>
     </article>
     <article class="proj-card" data-reveal>
       <h3>ScriptureQuest</h3>
-      
+      <p class="proj-role">Full-Stack Developer</p>
       <p class="proj-desc">A gamified, Duolingo-style learning platform for Christian theology — strict linear progression, a tamper-proof hearts/XP economy, spaced repetition, and a Socratic AI study partner.</p>
-      
-      
+      <div class="proj-card-media"><img src="assets/scripturequest-dashboard.png" alt="ScriptureQuest learning and progression interface" loading="lazy" /></div>
       <ul class="tech-list"><li class="tech-pill">React + Vite</li><li class="tech-pill">TypeScript</li><li class="tech-pill">Express.js</li><li class="tech-pill">Drizzle ORM + SQLite</li></ul>
-      <p class="no-link">Repo private · no public link yet</p>
+      <div class="proj-links"><p class="no-link">Repo private · no public link yet</p></div>
     </article>
     <article class="proj-card" data-reveal>
       <h3>Family Tasks</h3>
-      
+      <p class="proj-role">Full-Stack Developer</p>
       <p class="proj-desc">A real-time synchronized family task management web app — multi-user sync across devices, gamified with XP, streaks, and badges computed server-side so values can't be tampered with client-side.</p>
       <div class="proj-card-media"><img src="assets/family-tasks-dashboard.png" alt="Family Tasks admin dashboard" loading="lazy" /></div>
       
@@ -371,8 +784,7 @@ a:focus-visible, button:focus-visible, label:focus-within { outline: 2.5px solid
       <h3>Fargo Spa &amp; Wellness</h3>
       <p class="proj-role">Project Manager &amp; Dev Lead · Group Project</p>
       <p class="proj-desc">A full-stack booking platform for a spa &amp; wellness business, built as a summer course capstone with a teammate. Clients book and pay for appointments online; staff and admins run the business. Served as PM and Dev Lead: wrote requirements docs, reviewed all code, led QA.</p>
-      
-      
+      <div class="proj-card-media"><img src="assets/fargo-spa-wellness.png" alt="Fargo Spa and Wellness booking platform" loading="lazy" /></div>
       <ul class="tech-list"><li class="tech-pill">ASP.NET Core Blazor</li><li class="tech-pill">Entity Framework Core</li><li class="tech-pill">SQL Database</li><li class="tech-pill">Bootstrap</li><li class="tech-pill">Stripe</li></ul>
       <div class="proj-links"><a class="btn btn-primary btn-sm" href="https://fargospa.duckdns.org/" target="_blank" rel="noopener noreferrer">Live Demo ↗</a><a class="btn btn-ghost btn-sm" href="https://github.com/George-T83/Fargo-Spa-and-Wellness" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
     </article></div>
@@ -384,17 +796,11 @@ a:focus-visible, button:focus-visible, label:focus-within { outline: 2.5px solid
           <h2 class="section-heading" data-reveal>Let's Connect</h2>
           <p class="contact-lede" data-reveal>Open to software or electrical engineering internships and collaborations in AI and embedded systems.</p>
           <ul class="contact-grid">
-            <li class="contact-card" data-reveal><span class="contact-label">Email</span><a href="mailto:george.tannious@gmail.com">george.tannious@gmail.com</a></li>
+            <li class="contact-card" data-reveal><span class="contact-label">Email</span><a href="mailto:george.tannious@gmail.com">george.tannious@<wbr>gmail.com</a></li>
             <li class="contact-card" data-reveal><span class="contact-label">LinkedIn</span><a href="https://www.linkedin.com/in/george-tannious/" target="_blank" rel="noopener noreferrer">linkedin.com/in/george-tannious</a></li>
             <li class="contact-card" data-reveal><span class="contact-label">Resume</span><a href="mailto:george.tannious@gmail.com?subject=Resume%20Request">Available on request</a></li>
             <li class="contact-card" data-reveal><span class="contact-label">GitHub</span><a href="https://github.com/George-T83" target="_blank" rel="noopener noreferrer">github.com/George-T83</a></li>
           </ul>
-          <div class="github-graph-card" data-reveal id="github-graph-card">
-            <span class="contact-label">GitHub Activity</span>
-            <a href="https://github.com/George-T83" target="_blank" rel="noopener noreferrer">
-              <img class="github-graph" src="https://ghchart.rshah.org/4f46e5/George-T83" alt="George Tannious's GitHub contribution graph" loading="lazy" onerror="document.getElementById('github-graph-card').style.display='none'" />
-            </a>
-          </div>
         </div>
       </section>
     </main>
@@ -440,8 +846,12 @@ a:focus-visible, button:focus-visible, label:focus-within { outline: 2.5px solid
       function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            io.unobserve(entry.target);
+            var target = entry.target;
+            target.classList.add("is-visible");
+            io.unobserve(target);
+            setTimeout(function () {
+              target.style.transitionDelay = "";
+            }, 750);
           }
         });
       },
@@ -516,6 +926,6 @@ a:focus-visible, button:focus-visible, label:focus-within { outline: 2.5px solid
   }
 })();
 </script>
-
+<script src="scripts/lightbox.js"></script>
 </body>
 </html>
