@@ -138,13 +138,13 @@ a:focus-visible, button:focus-visible, label:focus-within { outline: 2.5px solid
 .dm-toggle-input:checked ~ .page .award-pill { color: #ffd98a; background: color-mix(in srgb, #ffb648 20%, transparent); border-color: color-mix(in srgb, #ffb648 40%, transparent); }
 .proj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
 .proj-card { position: relative; overflow: hidden; background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 26px; display: flex; flex-direction: column; }
-.proj-card-media { margin: 4px 0 14px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+.proj-card-media { margin: 0 0 14px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
 .proj-card-media img { width: 100%; aspect-ratio: 16/10; object-fit: cover; object-position: top; }
 .proj-role { font-size: 0.8rem; color: var(--accent); margin-bottom: 8px; }
-.proj-desc { flex-grow: 1; }
+.proj-desc { flex-grow: 0; margin-bottom: 14px; }
 .tech-list { list-style: none; margin: 0 0 6px; padding: 0; display: flex; flex-wrap: wrap; gap: 7px; }
 .tech-pill { font-size: 0.74rem; padding: 4px 10px; border-radius: 999px; background: var(--surface-alt); color: var(--text-muted); border: 1px solid var(--border); }
-.proj-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+.proj-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; padding-top: 14px; }
 .no-link { font-size: 0.78rem; color: var(--text-faint); font-style: italic; }
 .proj-links .no-link { margin: 0; align-self: center; }
 
