@@ -21,6 +21,7 @@
   --accent: #4f46e5; --accent-2: #0ea5a4;
   --border: #e4e6f2; --border-strong: #c7cbe8; --on-accent: #ffffff;
   --card-hover-shadow: 0 16px 32px -18px color-mix(in srgb, var(--text) 35%, transparent);
+  --nav-height: 56px;
   color-scheme: light;
 }
 .dm-toggle-input:checked ~ .page {
@@ -85,7 +86,7 @@ a:focus-visible, button:focus-visible, label:focus-within { outline: 2.5px solid
 .btn-ghost:hover { border-color: var(--accent); }
 .btn-sm { padding: 9px 16px; font-size: 0.82rem; }
 
-.section { padding-block: 80px; scroll-margin-top: 76px; }
+.section, section[id] { padding-block: 80px; scroll-margin-top: calc(var(--nav-height, 56px) + 1.5rem); }
 .section-alt { background: var(--surface-alt); }
 .eyebrow { font-family: var(--font-mono, 'Plus Jakarta Sans', sans-serif); color: var(--accent-2); text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.85rem; margin-bottom: 16px; }
 .section-heading { margin-bottom: 36px; }
@@ -111,6 +112,9 @@ a:focus-visible, button:focus-visible, label:focus-within { outline: 2.5px solid
 .badge-alt { color: var(--accent-2); }
 
 .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
+@media (min-width: 900px) {
+  .skills-grid { grid-template-columns: repeat(3, 1fr); }
+}
 .skill-card { position: relative; overflow: hidden; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 24px; }
 .skill-card h3 { font-size: 1.02rem; color: var(--accent-2); margin-bottom: 14px; }
 .pill-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
@@ -142,6 +146,7 @@ a:focus-visible, button:focus-visible, label:focus-within { outline: 2.5px solid
 .tech-pill { font-size: 0.74rem; padding: 4px 10px; border-radius: 999px; background: var(--surface-alt); color: var(--text-muted); border: 1px solid var(--border); }
 .proj-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
 .no-link { font-size: 0.78rem; color: var(--text-faint); font-style: italic; }
+.proj-links .no-link { margin: 0; align-self: center; }
 
 .contact-lede { max-width: 520px; }
 .contact-grid { list-style: none; margin: 30px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
@@ -167,7 +172,7 @@ a:focus-visible, button:focus-visible, label:focus-within { outline: 2.5px solid
 .skip-link:focus { top: 12px; }
 
 .site-footer { padding-block: 28px; border-top: 1px solid var(--border); }
-.site-footer p { margin: 0; font-size: 0.85rem; color: var(--text-faint); text-align: center; }
+.site-footer p { margin: 0; font-size: 0.85rem; color: var(--text-muted); text-align: center; }
 
 @media (max-width: 780px) {
   .hero-inner, .about-inner { grid-template-columns: 1fr; }
@@ -177,6 +182,12 @@ a:focus-visible, button:focus-visible, label:focus-within { outline: 2.5px solid
   .section { padding-block: 56px; }
   .proj-featured-grid { grid-template-columns: 1fr; }
   .proj-featured-body { padding: 22px 20px 8px; }
+}
+@media (max-width: 480px) {
+  .edu-meta .badge { border-radius: 8px; line-height: 1.4; }
+}
+@media (max-width: 400px) {
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 }
 
 
@@ -277,6 +288,17 @@ a:focus-visible, button:focus-visible, label:focus-within { outline: 2.5px solid
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 18px 20px;
+      break-inside: avoid;
+    }
+    @media (min-width: 900px) {
+      .tc-parts-grid {
+        display: block;
+        column-count: 3;
+        column-gap: 14px;
+      }
+      .tc-parts-group {
+        margin-bottom: 14px;
+      }
     }
     .tc-parts-group h5 {
       margin: 0 0 12px;
@@ -736,25 +758,25 @@ a:focus-visible, button:focus-visible, label:focus-within { outline: 2.5px solid
     </article>
     <article class="proj-card" data-reveal>
       <h3>VitaSync</h3>
-      
+      <p class="proj-role">Full-Stack Developer</p>
       <p class="proj-desc">An intelligent healthcare sync platform unifying fragmented patient record data and automating clinic appointment scheduling — built for data integrity and high availability.</p>
       
       
       <ul class="tech-list"><li class="tech-pill">Angular 19</li><li class="tech-pill">Angular Material</li><li class="tech-pill">Django REST Framework</li></ul>
-      <p class="no-link">Repo private · no public link yet</p>
+      <div class="proj-links"><p class="no-link">Repo private · no public link yet</p></div>
     </article>
     <article class="proj-card" data-reveal>
       <h3>ScriptureQuest</h3>
-      
+      <p class="proj-role">Full-Stack Developer</p>
       <p class="proj-desc">A gamified, Duolingo-style learning platform for Christian theology — strict linear progression, a tamper-proof hearts/XP economy, spaced repetition, and a Socratic AI study partner.</p>
       
       
       <ul class="tech-list"><li class="tech-pill">React + Vite</li><li class="tech-pill">TypeScript</li><li class="tech-pill">Express.js</li><li class="tech-pill">Drizzle ORM + SQLite</li></ul>
-      <p class="no-link">Repo private · no public link yet</p>
+      <div class="proj-links"><p class="no-link">Repo private · no public link yet</p></div>
     </article>
     <article class="proj-card" data-reveal>
       <h3>Family Tasks</h3>
-      
+      <p class="proj-role">Full-Stack Developer</p>
       <p class="proj-desc">A real-time synchronized family task management web app — multi-user sync across devices, gamified with XP, streaks, and badges computed server-side so values can't be tampered with client-side.</p>
       <div class="proj-card-media"><img src="assets/family-tasks-dashboard.png" alt="Family Tasks admin dashboard" loading="lazy" /></div>
       
